@@ -1,6 +1,17 @@
 # Выполнено ДЗ №
 
- - [ ] Основное ДЗ
+ - [*ml и применен
+   модифицирован web-pod.yaml
+
+## Как запустить проект:
+ - скачать образ с docker hub enzo1920/nginx-test:valve
+ - запустить контейнер docker docker run -d -p 8000:8000 nginx-test:valve
+
+## Как проверить работоспособность:
+  - перейти по ссылке из дз http://localhost:8000/homework.html
+  - для задания по куберу нужно применить web-pod.yaml командой kubectl apply -f web-pod.yaml && kubectl get pods -w
+  - потом запустить перенаправление портов kubectl port-forward --address 0.0.0.0 pod/web 8000:8000
+] Основное ДЗ
  - [ ] Задание со *
 
 ## В процессе сделано:
@@ -13,13 +24,23 @@
    Кластерный DNS — это DNS-сервер наряду с другими DNS-серверами в вашем окружении, который обновляет DNS-записи для сервисов Kubernetes.
    Контейнеры, запущенные посредством Kubernetes, автоматически включают этот DNS-сервер в свои DNS.
    Видимо по этой причине он и восстанавливается
+
  - Пункт 2
-
+   создан Dockerfile
+   настроен nginx согласно пунктам дз
+   установлен и настроен minicube
+   изучены команды kubectl
+   написан web-pod.yml и применен
+   модифицирован web-pod.yaml
+ 
 ## Как запустить проект:
- - Например, запустить команду X в директории Y
-
+ - скачать образ с docker hub enzo1920/nginx-test:valve
+ - запустить контейнер docker docker run -d -p 8000:8000 nginx-test:valve
+ 
 ## Как проверить работоспособность:
- - Например, перейти по ссылке http://localhost:8080
-
+  - перейти по ссылке из дз http://localhost:8000/homework.html
+  - для задания по куберу нужно применить web-pod.yaml командой kubectl apply -f web-pod.yaml && kubectl get pods -w
+  - потом запустить перенаправление портов kubectl port-forward --address 0.0.0.0 pod/web 8000:8000
+  - перейти по ссылке http://localhost:8000/index.html
 ## PR checklist:
- - [ ] Выставлен label с темой домашнего задания
+ - [*] Выставлен label с темой домашнего задания
