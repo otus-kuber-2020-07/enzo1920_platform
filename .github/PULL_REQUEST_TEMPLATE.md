@@ -8,7 +8,7 @@
  - запустить контейнер docker docker run -d -p 8000:8000 nginx-test:valve
 
 ## Как проверить работоспособность:
-  - перейти по ссылке из дз http://localhost:8000/homework.html
+  - перейти по ссылке из дз http://localhost:8000/index.html
   - для задания по куберу нужно применить web-pod.yaml командой kubectl apply -f web-pod.yaml && kubectl get pods -w
   - потом запустить перенаправление портов kubectl port-forward --address 0.0.0.0 pod/web 8000:8000
 ] Основное ДЗ
