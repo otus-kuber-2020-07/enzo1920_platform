@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+# This role binding allows "bob" 
+kind: ClusterRoleBinding
+metadata:
+  name: bob-admin
+  namespace: default
+subjects:
+# You can specify more than one "subject"
+- kind: ServiceAccount
+  name: bob
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: ClusterRole #this must be Role or ClusterRole
+  name: admin 
