@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: coredns-tcp-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: dns
+  namespace: kube-system
+spec:
+  selector:
+    name: coredns-tcp
+  ports:
+    - { protocol: TCP, name: tcp-53, port: 53, targetPort: 53 }
+    - { protocol: TCP, name: tcp-9153, port: 9153, targetPort: 9153 }
+  loadBalancerIP: "172.17.255.1"
+  type: LoadBalancer
