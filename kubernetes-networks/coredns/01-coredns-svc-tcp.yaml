@@ -7,9 +7,15 @@ metadata:
   namespace: kube-system
 spec:
   selector:
-    name: coredns-tcp
+    k8s-app: kube-dns
   ports:
-    - { protocol: TCP, name: tcp-53, port: 53, targetPort: 53 }
-    - { protocol: TCP, name: tcp-9153, port: 9153, targetPort: 9153 }
+    - name: tcp-53
+      protocol: TCP
+      port: 53
+      targetPort: 53
+    - name: tcp-9153
+      protocol: TCP
+      port: 9153
+      targetPort: 9153
   loadBalancerIP: "172.17.255.1"
   type: LoadBalancer
