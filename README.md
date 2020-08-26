@@ -2,7 +2,7 @@
 enzo1920 Platform repository
 
 
-## Kubernetes networks
+## Kubernetes volumes
 В ходе дз были выполнены задания по методичке:
 Добавление проверок Pod
 Создание объекта Deployment
@@ -39,3 +39,4 @@ kubectl -n kube-system get deployment coredns -o yaml
           failureThreshold: 3
           httpGet:
 ```
+task with[*]: https://ealebed.github.io/posts/2018/Р·РЅР°РєРѕРјСЃС‚РІРѕ-СЃ-kubernetes-С‡Р°СЃС‚СЊ-14-СЃРµРєСЂРµС‚С‹-secrets/
