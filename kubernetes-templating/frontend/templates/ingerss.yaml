@@ -9,13 +9,13 @@ metadata:
 spec:
     tls:
     - hosts:
-      - {{ .Values.ingress.domain }}
-      secretName: {{ .Values.ingress.domain }}
+      - {{ .Values.ingress.hosts }}
+      secretName: {{ .Values.ingress.hosts }}
     rules:
-    - host: {{ .Values.ingress.domain }}
+    - host: {{ .Values.ingress.hosts }}
       http:
         paths:
         - path: /
           backend:
-            serviceName: frontend
-            servicePort: 80
+            serviceName: {{ .Values.ingress.serviceName }}
+            servicePort: {{ .Values.ingress.servicePort }}
