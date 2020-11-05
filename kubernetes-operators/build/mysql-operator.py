@@ -73,6 +73,7 @@ def mysql_on_create(body, spec, **kwargs):
         'database': database})
 
     # Определяем, что созданные ресурсы являются дочерними к управляемому CustomResource:
+    kopf.append_owner_reference(restore_job, owner=body)
     kopf.append_owner_reference(persistent_volume, owner=body)
     kopf.append_owner_reference(persistent_volume_claim, owner=body)  # addopt
     kopf.append_owner_reference(service, owner=body)
@@ -103,15 +104,18 @@ def mysql_on_create(body, spec, **kwargs):
         api = kubernetes.client.CoreV1Api()
         print(api.create_persistent_volume(backup_pv))
         api.create_persistent_volume(backup_pv)
-    except kubernetes.client.rest.ApiException:
-        pass
+    except kubernetes.client.rest.ApiException as e:
+        #pass
+         print(e)
 
     try:
         backup_pvc = render_template('backup-pvc.yml.j2', {'name': name})
         api = kubernetes.client.CoreV1Api()
         api.create_namespaced_persistent_volume_claim('default', backup_pvc)
-    except kubernetes.client.rest.ApiException:
-        pass
+    except kubernetes.client.rest.ApiException as e:
+        #pass
+         print('------->>>>>>>> \n')
+         print(e)
 
 
 @kopf.on.delete('otus.homework', 'v1', 'mysqls')
