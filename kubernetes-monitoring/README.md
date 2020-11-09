@@ -36,3 +36,7 @@ kubectl get service -n nginx
 ab -n 1000 -c 100 http://service_ip/
 ab -n 10000 -c 100 http://service_ip/
 ```
+
+<img src="./dz_monitoring/1.JPG" alt="granafa_pods"/>
+<img src="./dz_monitoring/2.JPG" alt="ab"/>
+<img src="./dz_monitoring/3.JPG" alt="prometheus"/>
