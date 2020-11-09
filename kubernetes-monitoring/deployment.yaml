@@ -21,8 +21,7 @@ spec:
               containerPort: 80
         - name: nginx-exporter
           image: nginx/nginx-prometheus-exporter:0.8.0
-          args: ['-nginx.scrape-uri', 'http://localhost:80/basic_status']
           ports:
-            - name: exporter
+            - name: metrics
               containerPort: 9113
-
+          resources: {}
