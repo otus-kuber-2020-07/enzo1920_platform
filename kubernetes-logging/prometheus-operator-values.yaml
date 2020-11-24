@@ -20,7 +20,11 @@ grafana:
     path: /
     hosts:
       - grafana.35.222.48.184.xip.io
-
+    additionalDataSources:
+      - name: Loki
+        type: loki
+        url: http://loki:3100/
+        access: proxy
 prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
