@@ -1,0 +1,41 @@
+tolerations:
+  - key: node-role
+    operator: Equal
+    value: infra
+    effect: NoSchedule
+
+nodeSelector:
+  cloud.google.com/gke-nodepool: infra-pool
+
+grafana:
+  enabled: true
+  defaultDashboardsEnabled: true
+  adminPassword: password
+
+  ingress:
+    enabled: true
+    annotations: {
+      kubernetes.io/ingress.class: nginx
+    }
+    path: /
+    hosts:
+      - grafana.35.222.48.184.xip.io
+    additionalDataSources:
+      - name: Loki
+        type: loki
+        url: http://loki:3100/
+        access: proxy
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+
+  ingress:
+    enabled: true
+    annotations: {
+      kubernetes.io/ingress.class: nginx
+    }
+    path: /
+    hosts:
+      - prometheus.35.222.48.184.xip.io
