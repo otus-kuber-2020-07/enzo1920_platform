@@ -204,6 +204,11 @@ Path      Type     Accessor               Description
 ----      ----     --------               -----------
 token/    token    auth_token_ee851ea5    token based credentials
 ```
+
+Что касается команды sed  я воспользовался google :)
+```
+sed 's/\x1b\[[0-9;]*m//g'           # Remove color sequences only
+```
 ------------------------------------------------------------------
 ```
 kubectl exec -it vault-0 -- vault read otus/otus-ro/config
@@ -268,9 +273,11 @@ curl --request POST --data '{"bar": "baz"}' --header "X-Vault-Token:s.w2uKtVPi3c
 curl --request POST --data '{"bar": "baz"}' --header "X-Vault-Token:s.w2uKtVPi3c4fZx1UX3wuGriQ" $VAULT_ADDR/v1/otus/otus-rw/config1
 ```
 --------------------------------------------------------------------
+[По ссылке на Hashicorp](https://learn.hashicorp.com/tutorials/vault/policies)
+нужно добавить "update" в файл otus-policy.hcl
 ```
 path "otus/otus-rw/*" {
-capabilities = ["read", "create", "list", "updata"]
+capabilities = ["read", "create", "list", "update"]
 ```
 
 ---------------------------------------------------------------------
