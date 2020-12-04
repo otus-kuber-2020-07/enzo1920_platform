@@ -62,7 +62,7 @@ storage-pvc   Bound    pvc-538faecd-6bcb-4037-9b0a-e321f8eb8031   1Gi        RWO
 
 7)Подконнектимся  к поду и создадим файл(тут ошибся, создал два файла один data.txt, второй date.txt записал в один)
 
-````
+```
 hw$ k exec -it storage-pod sh
 kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
 / # cd /data
