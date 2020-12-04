@@ -1,7 +1,10 @@
 
 Задание выполнено с помощью кластера миникуба
+---
 0)создаем кластер миникуба.
+---
 1)[Включаем аддон по мануалу](https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/)
+---
 2)Добавляем ноду worker, получается так:
 ```
 ubuntu@srv01:~$ k get nodes
@@ -9,9 +12,10 @@ NAME           STATUS   ROLES    AGE     VERSION
 minikube       Ready    master   4m45s   v1.19.2
 minikube-m02   Ready    <none>   49s     v1.19.2
 ```
+---
 3)Далее по мануалу из первой ссылки яно, что можно как аддон подключить драйвер, но установим его
 Ищем в гугле, заходим на гит репо, читаем инструкцию и выполняем:
---------------------------------------------
+---
 ```
 k apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v2.0.1/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
 k apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v2.0.1/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
