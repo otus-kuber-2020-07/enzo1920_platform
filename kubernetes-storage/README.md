@@ -1,21 +1,21 @@
 
 Задание выполнено с помощью кластера миникуба
----
 0)создаем кластер миникуба.
----
+
 1)[Включаем аддон по мануалу](https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/)
----
+
 2)Добавляем ноду worker, получается так:
+
 ```
 ubuntu@srv01:~$ k get nodes
 NAME           STATUS   ROLES    AGE     VERSION
 minikube       Ready    master   4m45s   v1.19.2
 minikube-m02   Ready    <none>   49s     v1.19.2
 ```
----
+
 3)Далее по мануалу из первой ссылки яно, что можно как аддон подключить драйвер, но установим его
 Ищем в гугле, заходим на гит репо, читаем инструкцию и выполняем:
----
+
 ```
 k apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v2.0.1/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
 k apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v2.0.1/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
@@ -26,7 +26,6 @@ k apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter
 k apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v2.0.1/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 ```
 4)Смотрим, по мануалу , что должен подняться контроллер. Так, окей, стартовал.
------------------------------------
 ```
 ubuntu@srv01:~$ k get po
 NAME                    READY   STATUS    RESTARTS   AGE
@@ -35,7 +34,7 @@ snapshot-controller-0   1/1     Running   0          3m59s
 ```
 
 5) Проверяем поды, тоже все гут
------------------------------------
+
 ```
 ubuntu@srv01:/home/csi-driver-host-path$ k get pods
 NAME                         READY   STATUS    RESTARTS   AGE
@@ -47,9 +46,9 @@ csi-hostpath-socat-0         1/1     Running   0          78s
 csi-hostpathplugin-0         3/3     Running   0          81s
 snapshot-controller-0        1/1     Running   0          12m
 ```
-------------------------------------
+
+6)берем примеры из деректории примеров(csi) немного правим и ставим по методичке
 ```
-6) Собственно берем примеры из деректории примеров(csi) немного правим и ставим по методичке
 ubuntu@srv01:/home/kube_learn/enzo1920_platform/kubernetes-storage/hw$ k apply -f storageclass.yaml                    storageclass.storage.k8s.io/storage-enzo1920 created
 ubuntu@srv01:/home/kube_learn/enzo1920_platform/kubernetes-storage/hw$ k apply -f storage-p
 storage-pod.yaml  storage-pvc.yaml
@@ -61,7 +60,6 @@ storage-pvc   Bound    pvc-538faecd-6bcb-4037-9b0a-e321f8eb8031   1Gi        RWO
 
 ```
 
--------------------------------------
 7)Подконнектимся  к поду и создадим файл(тут ошибся, создал два файла один data.txt, второй date.txt записал в один)
 
 ````
@@ -78,8 +76,6 @@ date.txt
 Thu Dec  3 22:33:55 UTC 2020
 /data # exit
 ```
--------------------------------------
-
 
 8) Теперь посмотрим , записалось ли
 ```
